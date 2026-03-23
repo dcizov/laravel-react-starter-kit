@@ -93,6 +93,6 @@
             "strings": false
         }
     },
-    "LaravelExtraIntellisense.phpCommand": "docker compose exec -w /var/www/html -u sail -t laravel.test php -r \"{code}\"",
+    "LaravelExtraIntellisense.phpCommand": "docker compose exec -w /var/www/html -u sail laravel.test php -r \"{code}\"",
     "LaravelExtraIntellisense.basePathForCode": "/var/www/html"
 }
