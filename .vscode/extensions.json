@@ -1,0 +1,21 @@
+{
+    "recommendations": [
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "open-southeners.laravel-pint",
+        "bradlc.vscode-tailwindcss",
+        "bmewburn.vscode-intelephense-client",
+        "mikestead.dotenv",
+        "EditorConfig.EditorConfig",
+        "laravel.vscode-laravel",
+        "amiralizadeh9480.laravel-extra-intellisense",
+        "onecentlin.laravel-blade",
+        "codingyu.laravel-goto-view",
+        "nhedger.inertia",
+        "calebporzio.better-phpunit",
+        "xdebug.php-debug",
+        "usernamehw.errorlens",
+        "eamodio.gitlens",
+        "humao.rest-client"
+    ]
+}
