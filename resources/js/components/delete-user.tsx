@@ -35,7 +35,6 @@ export default function DeleteUser() {
                 </div>
 
                 <Dialog>
-                    f
                     <DialogTrigger
                         render={
                             <Button
