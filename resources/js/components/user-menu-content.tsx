@@ -22,15 +22,18 @@ export function UserMenuContent({ user }: Props) {
     const handleLogout = () => {
         cleanup();
         router.flushAll();
+        router.post(logout());
     };
 
     return (
         <>
-            <DropdownMenuLabel className="p-0 font-normal">
-                <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-                    <UserInfo user={user} showEmail={true} />
-                </div>
-            </DropdownMenuLabel>
+            <DropdownMenuGroup>
+                <DropdownMenuLabel className="p-0 font-normal">
+                    <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
+                        <UserInfo user={user} showEmail={true} />
+                    </div>
+                </DropdownMenuLabel>
+            </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
                 <DropdownMenuItem
@@ -50,16 +53,17 @@ export function UserMenuContent({ user }: Props) {
             <DropdownMenuSeparator />
             <DropdownMenuItem
                 render={
-                    <Link
+                    <a
                         className="block w-full cursor-pointer"
-                        href={logout()}
-                        as="button"
-                        onClick={handleLogout}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            handleLogout();
+                        }}
                         data-test="logout-button"
                     >
                         <LogOut className="mr-2" />
                         Log out
-                    </Link>
+                    </a>
                 }
             />
         </>
