@@ -7,6 +7,47 @@ import SettingsLayout from '@/layouts/settings/layout';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
+function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
+    return (
+        <div className="flex min-h-screen flex-col items-center justify-center gap-4 p-8 text-center">
+            <h1 className="text-2xl font-bold">Something went wrong</h1>
+            <p className="text-sm text-muted-foreground">
+                {error instanceof Error
+                    ? error.message
+                    : 'An unexpected error occurred'}
+            </p>
+            <button
+                className="rounded-md bg-primary px-4 py-2 text-sm text-primary-foreground"
+                onClick={resetErrorBoundary}
+            >
+                Try again
+            </button>
+        </div>
+    );
+}
+
+function AppWithErrorBoundary({
+    App,
+    props,
+}: {
+    App: React.ComponentType<any>;
+    props: any;
+}) {
+    const { url } = props;
+
+    return (
+        <ErrorBoundary
+            FallbackComponent={ErrorFallback}
+            resetKeys={[url]}
+            onError={(error, info) => {
+                console.error('[ErrorBoundary]', error, info.componentStack);
+            }}
+        >
+            <App {...props} />
+        </ErrorBoundary>
+    );
+}
+
 createInertiaApp({
     title: (title) => (title ? `${title} - ${appName}` : appName),
     layout: (name) => {
