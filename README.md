@@ -26,10 +26,58 @@ lightning-fast Vite compilation.
 - **Frontend:** React 19, TypeScript, Tailwind CSS
 - **Components:** [shadcn/ui](https://ui.shadcn.com) and [base-ui](https://base-ui.com/)
 
+## Requirements
+
+- [Docker](https://www.docker.com/) — required for Laravel Sail
+- **PHP 8.4+ & Composer** — only needed if bootstrapping without Docker
+
+## Installation
+
+### Without PHP installed (Docker only)
+
+Use a throwaway Docker container to install Composer dependencies before Sail is available:
+
+```bash
+git clone https://github.com/dcizov/laravel-react-inertia.git
+cd laravel-react-inertia
+
+cp .env.example .env
+
+docker run --rm \
+  -u "$(id -u):$(id -g)" \
+  -v "$(pwd):/var/www/html" \
+  -w /var/www/html \
+  laravelsail/php84-composer:latest \
+  composer install --ignore-platform-reqs
+```
+
+### With PHP \& Composer installed locally
+
+```bash
+git clone https://github.com/dcizov/laravel-react-inertia.git
+cd laravel-react-inertia
+
+cp .env.example .env
+composer install
+```
+
+## Starting the Dev Environment
+
+Once dependencies are installed, bring up the containers and complete setup:
+
+```bash
+sail up -d
+sail artisan key:generate
+sail artisan migrate
+sail pnpm install
+sail pnpm dev
+```
+
 ## Documentation
 
 - **Starter Kits:** [laravel.com/docs/starter-kits](https://laravel.com/docs/starter-kits)
 - **Laravel:** [laravel.com/docs](https://laravel.com/docs)
+- **Laravel Sail:** [laravel.com/docs/sail](https://laravel.com/docs/sail)
 - **Laravel Learn:** [laravel.com/learn](https://laravel.com/learn)
 - **Laracasts:** [laracasts.com](https://laracasts.com) – thousands of video tutorials on Laravel, PHP, testing, and
   JavaScript
