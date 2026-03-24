@@ -4,19 +4,15 @@
 
 ---
 
-## About This Starter Kit
+# Laravel + React Starter Kit
 
-This React starter kit provides a robust, modern starting point for building Laravel applications with a React frontend using [Inertia](https://inertiajs.com).
+## Introduction
+
+A React starter kit provides a robust, modern starting point for building Laravel applications with a React frontend using [Inertia](https://inertiajs.com).
 
 Inertia allows you to build modern, single-page React applications using classic server-side routing and controllers — combining the frontend power of React with the backend productivity of Laravel and lightning-fast Vite compilation.
 
-### Tech Stack
-
-| Layer      | Technology                                                                                                                                                                                                                                                                                                         |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Backend    | Laravel — [routing](https://laravel.com/docs/routing), [IoC container](https://laravel.com/docs/container), [Eloquent ORM](https://laravel.com/docs/eloquent), [migrations](https://laravel.com/docs/migrations), [queues](https://laravel.com/docs/queues), [broadcasting](https://laravel.com/docs/broadcasting) |
-| Frontend   | React 19, TypeScript, Tailwind CSS                                                                                                                                                                                                                                                                                 |
-| Components | [shadcn/ui](https://ui.shadcn.com) and [base-ui](https://base-ui.com/)                                                                                                                                                                                                                                             |
+This starter kit uses React 19, TypeScript, Tailwind CSS, [shadcn/ui](https://ui.shadcn.com), and [base-ui](https://base-ui.com/), with PostgreSQL and [Laravel Sail](https://laravel.com/docs/sail) for local development.
 
 ---
 
@@ -86,25 +82,13 @@ The app will be available at [**http://localhost**](http://localhost).
 
 ## Documentation
 
-- [Starter Kits](https://laravel.com/docs/starter-kits)
+This is not an official Laravel starter kit, but the [official React starter kit docs](https://laravel.com/docs/starter-kits) largely apply. Additional resources:
+
 - [Laravel](https://laravel.com/docs)
-- [Laravel Sail](https://laravel.com/docs/sail)
 - [Laravel Learn](https://laravel.com/learn)
 - [Laracasts](https://laracasts.com) — thousands of video tutorials on Laravel, PHP, testing, and JavaScript
 
 ---
-
-## Contributing
-
-Thank you for considering contributing! Please read the [contribution guide](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-Please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability, please e-mail Taylor Otwell at [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
 ## License
 
