@@ -1,4 +1,6 @@
 import { createInertiaApp } from '@inertiajs/react';
+import { ErrorBoundary } from 'react-error-boundary';
+import type { FallbackProps } from 'react-error-boundary';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { initializeTheme } from '@/hooks/use-appearance';
 import AppLayout from '@/layouts/app-layout';
@@ -26,28 +28,6 @@ function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
     );
 }
 
-function AppWithErrorBoundary({
-    App,
-    props,
-}: {
-    App: React.ComponentType<any>;
-    props: any;
-}) {
-    const { url } = props;
-
-    return (
-        <ErrorBoundary
-            FallbackComponent={ErrorFallback}
-            resetKeys={[url]}
-            onError={(error, info) => {
-                console.error('[ErrorBoundary]', error, info.componentStack);
-            }}
-        >
-            <App {...props} />
-        </ErrorBoundary>
-    );
-}
-
 createInertiaApp({
     title: (title) => (title ? `${title} - ${appName}` : appName),
     layout: (name) => {
@@ -64,7 +44,20 @@ createInertiaApp({
     },
     strictMode: true,
     withApp(app) {
-        return <TooltipProvider delayDuration={0}>{app}</TooltipProvider>;
+        return (
+            <ErrorBoundary
+                FallbackComponent={ErrorFallback}
+                onError={(error, info) => {
+                    console.error(
+                        '[ErrorBoundary]',
+                        error,
+                        info.componentStack,
+                    );
+                }}
+            >
+                <TooltipProvider delay={0}>{app}</TooltipProvider>
+            </ErrorBoundary>
+        );
     },
     progress: {
         color: '#4B5563',
