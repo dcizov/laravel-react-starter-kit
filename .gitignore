@@ -27,3 +27,4 @@ yarn-error.log
 /.zed
 .idea/
 composer.lock
+.eslintcache
