@@ -28,3 +28,4 @@ yarn-error.log
 .idea/
 composer.lock
 .eslintcache
+_ide_helper.php
