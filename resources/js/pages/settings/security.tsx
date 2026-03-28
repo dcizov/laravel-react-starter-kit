@@ -138,6 +138,7 @@ export default function Security({
 
                             <div className="flex items-center gap-4">
                                 <Button
+                                    type="submit"
                                     disabled={processing}
                                     data-test="update-password-button"
                                 >
