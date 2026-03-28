@@ -32,8 +32,8 @@ This starter kit uses React 19, TypeScript, Tailwind CSS, [shadcn/ui](https://ui
 ### Without PHP (Docker only)
 
 ```bash
-git clone https://github.com/dcizov/laravel-react-inertia.git
-cd laravel-react-inertia
+git clone https://github.com/dcizov/laravel-react-starter-kit.git
+cd laravel-react-starter-kit
 
 cp .env.example .env
 
@@ -48,8 +48,8 @@ docker run --rm \
 ### With PHP & Composer
 
 ```bash
-git clone https://github.com/dcizov/laravel-react-inertia.git
-cd laravel-react-inertia
+git clone https://github.com/dcizov/laravel-react-starter-kit.git
+cd laravel-react-starter-kit
 
 cp .env.example .env
 composer install
@@ -80,13 +80,12 @@ The app will be available at [**http://localhost**](http://localhost).
 
 ---
 
-## Documentation
+## Developer Tools
 
-This is not an official Laravel starter kit, but the [official React starter kit docs](https://laravel.com/docs/starter-kits) largely apply. Additional resources:
+The following tools are pre-configured and active in the local development environment:
 
-- [Laravel](https://laravel.com/docs)
-- [Laravel Learn](https://laravel.com/learn)
-- [Laracasts](https://laracasts.com) — thousands of video tutorials on Laravel, PHP, testing, and JavaScript
+- **[Laravel Debugbar](https://github.com/barryvdh/laravel-debugbar)** — in-browser debug toolbar for queries, requests, and performance profiling. Available automatically when `APP_DEBUG=true`.
+- **[Laravel IDE Helper](https://github.com/barryvdh/laravel-ide-helper)** — generates PHPDoc annotations and meta files for IDE autocompletion. Runs automatically via Composer post-update hook.
 
 ---
 
