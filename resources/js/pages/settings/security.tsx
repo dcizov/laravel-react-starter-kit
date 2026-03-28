@@ -1,4 +1,3 @@
-import { Transition } from '@headlessui/react';
 import { Form, Head } from '@inertiajs/react';
 import { ShieldCheck } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
@@ -145,17 +144,15 @@ export default function Security({
                                     Save password
                                 </Button>
 
-                                <Transition
-                                    show={recentlySuccessful}
-                                    enter="transition ease-in-out"
-                                    enterFrom="opacity-0"
-                                    leave="transition ease-in-out"
-                                    leaveTo="opacity-0"
+                                <p
+                                    className={`text-sm text-neutral-600 transition-opacity duration-300 ease-in-out ${
+                                        recentlySuccessful
+                                            ? 'opacity-100'
+                                            : 'opacity-0'
+                                    }`}
                                 >
-                                    <p className="text-sm text-neutral-600">
-                                        Saved
-                                    </p>
-                                </Transition>
+                                    Saved
+                                </p>
                             </div>
                         </>
                     )}
