@@ -95,5 +95,5 @@
     },
     "LaravelExtraIntellisense.phpCommand": "docker compose exec -w /var/www/html -u sail laravel.test php -r \"{code}\"",
     "LaravelExtraIntellisense.basePathForCode": "/var/www/html",
-    "Laravel.phpCommand": "docker compose exec -w /var/www/html laravel.test php"
+    "Laravel.phpCommand": "./vendor/bin/sail php"
 }
