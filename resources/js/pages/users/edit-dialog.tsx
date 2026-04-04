@@ -1,7 +1,6 @@
 import { Form, router } from '@inertiajs/react';
 import { ShieldOff } from 'lucide-react';
 import { useState } from 'react';
-
 import UserController from '@/actions/App/Http/Controllers/Users/UserController';
 import UserPasswordController from '@/actions/App/Http/Controllers/Users/UserPasswordController';
 import UserRolesController from '@/actions/App/Http/Controllers/Users/UserRolesController';
@@ -107,7 +106,7 @@ export function EditUserDialog({
 
                     <Tabs
                         defaultValue="profile"
-                        className="flex w-full flex-col min-h-52"
+                        className="flex min-h-52 w-full flex-col"
                     >
                         <TabsList className="w-full">
                             <TabsTrigger value="profile">Profile</TabsTrigger>
