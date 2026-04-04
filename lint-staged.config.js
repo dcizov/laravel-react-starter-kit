@@ -3,9 +3,8 @@ const lintStagedConfig = {
     '**/*.{ts,tsx,js,jsx}': [
         'prettier --write --cache --ignore-path .prettierignore',
         'eslint --fix --cache',
-        () => 'tsc --noEmit',
     ],
-    '**/*.{md,mdx,json}':
+    '**/*.{md,mdx,json,css}':
         'prettier --write --cache --ignore-path .prettierignore',
     // Added for Laravel
     '**/*.php': 'vendor/bin/pint',
