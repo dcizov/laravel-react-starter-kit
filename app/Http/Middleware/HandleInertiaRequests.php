@@ -2,7 +2,9 @@
 
 namespace App\Http\Middleware;
 
+use App\Enums\PermissionEnum;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
@@ -41,6 +43,11 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
+            'can' => fn () => $request->user()
+                ? collect(PermissionEnum::cases())
+                    ->mapWithKeys(fn (PermissionEnum $permission) => [$permission->value => Gate::allows($permission->value)])
+                    ->all()
+                : [],
             'sidebarOpen' => ! $request->hasCookie('sidebar_state') || $request->cookie('sidebar_state') === 'true',
         ];
     }
