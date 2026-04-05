@@ -52,10 +52,17 @@ class RolePermissionSeeder extends Seeder
         Role::findOrCreate(RoleEnum::User->value, 'web')
             ->syncPermissions($userPermissions);
 
-        $testUser = User::where('email', 'test@example.com')->first();
+        $users = [
+            'superadmin@example.com' => RoleEnum::SuperAdmin->value,
+            'admin@example.com' => RoleEnum::Admin->value,
+            'user@example.com' => RoleEnum::User->value,
+        ];
 
-        if ($testUser) {
-            $testUser->assignRole(RoleEnum::SuperAdmin->value);
+        foreach ($users as $email => $role) {
+            $user = User::where('email', $email)->first();
+            if ($user) {
+                $user->assignRole($role);
+            }
         }
     }
 }
