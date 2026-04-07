@@ -29,7 +29,7 @@ This starter kit uses React 19, TypeScript, Tailwind CSS, [shadcn/ui](https://ui
 ## Requirements
 
 - [Docker](https://www.docker.com/) — required for Laravel Sail
-- **PHP 8.5+ & Composer** — only needed if bootstrapping without Docker
+- **PHP 8.4+ & Composer** — only needed if bootstrapping without Docker
 
 ---
 
