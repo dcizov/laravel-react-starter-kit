@@ -1,5 +1,6 @@
 import { Form } from '@inertiajs/react';
 import { useState } from 'react';
+import { toast } from 'sonner';
 
 import TaskController from '@/actions/App/Http/Controllers/Tasks/TaskController';
 import InputError from '@/components/input-error';
@@ -80,6 +81,7 @@ export function CreateTaskDialog({
                     {...TaskController.store.form()}
                     disableWhileProcessing
                     onSuccess={() => {
+                        toast.success('Task created');
                         setStatus('todo');
                         setLabel('feature');
                         setPriority('medium');

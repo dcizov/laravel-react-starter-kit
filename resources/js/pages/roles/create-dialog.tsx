@@ -1,4 +1,5 @@
 import { Form } from '@inertiajs/react';
+import { toast } from 'sonner';
 import RoleController from '@/actions/App/Http/Controllers/Roles/RoleController';
 import InputError from '@/components/input-error';
 import { Button } from '@/components/ui/button';
@@ -48,7 +49,10 @@ export function CreateRoleDialog({
                 <Form
                     {...RoleController.store.form()}
                     disableWhileProcessing
-                    onSuccess={() => onOpenChange(false)}
+                    onSuccess={() => {
+                        toast.success('Role created');
+                        onOpenChange(false);
+                    }}
                     className="space-y-4"
                 >
                     {({ processing, errors }) => (

@@ -1,3 +1,4 @@
+import { toast } from 'sonner';
 import { DeleteResourceDialog } from '@/components/delete-resource-dialog';
 import { destroy } from '@/routes/permissions';
 import type { Permission } from '@/types';
@@ -35,6 +36,7 @@ export function DeletePermissionDialog({
             deleteUrl={destroy(permission).url}
             open={open}
             onOpenChange={onOpenChange}
+            onSuccess={() => toast.success('Permission deleted')}
         />
     );
 }

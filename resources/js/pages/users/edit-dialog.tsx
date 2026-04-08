@@ -1,6 +1,7 @@
 import { Form, router } from '@inertiajs/react';
 import { ShieldOff } from 'lucide-react';
 import { useState } from 'react';
+import { toast } from 'sonner';
 import UserController from '@/actions/App/Http/Controllers/Users/UserController';
 import UserPasswordController from '@/actions/App/Http/Controllers/Users/UserPasswordController';
 import UserRolesController from '@/actions/App/Http/Controllers/Users/UserRolesController';
@@ -75,6 +76,7 @@ export function EditUserDialog({
         router.delete(UserTwoFactorController.url(user), {
             preserveScroll: true,
             onSuccess: () => {
+                toast.success('Two-factor authentication disabled');
                 setConfirmDisable2faOpen(false);
                 onOpenChange(false);
             },
@@ -126,7 +128,10 @@ export function EditUserDialog({
                                 {...UserController.update.form(user)}
                                 disableWhileProcessing
                                 options={{ preserveScroll: true }}
-                                onSuccess={() => onOpenChange(false)}
+                                onSuccess={() => {
+                                    toast.success('User updated');
+                                    onOpenChange(false);
+                                }}
                                 className="space-y-4 pt-4"
                             >
                                 {({ processing, errors }) => (
@@ -185,7 +190,10 @@ export function EditUserDialog({
                                     {...UserRolesController.form(user)}
                                     disableWhileProcessing
                                     options={{ preserveScroll: true }}
-                                    onSuccess={() => onOpenChange(false)}
+                                    onSuccess={() => {
+                                        toast.success('Roles updated');
+                                        onOpenChange(false);
+                                    }}
                                     className="space-y-4 pt-4"
                                 >
                                     {({ processing, errors }) => (
@@ -224,7 +232,10 @@ export function EditUserDialog({
                                 disableWhileProcessing
                                 options={{ preserveScroll: true }}
                                 resetOnSuccess
-                                onSuccess={() => onOpenChange(false)}
+                                onSuccess={() => {
+                                    toast.success('Password updated');
+                                    onOpenChange(false);
+                                }}
                                 className="space-y-4 pt-4"
                             >
                                 {({ processing, errors }) => (

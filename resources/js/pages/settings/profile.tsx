@@ -1,4 +1,6 @@
 import { Form, Head, Link, usePage } from '@inertiajs/react';
+import { useEffect } from 'react';
+import { toast } from 'sonner';
 import ProfileController from '@/actions/App/Http/Controllers/Settings/ProfileController';
 import DeleteUser from '@/components/delete-user';
 import Heading from '@/components/heading';
@@ -18,6 +20,12 @@ export default function Profile({
 }) {
     const { auth } = usePage().props;
 
+    useEffect(() => {
+        if (status === 'verification-link-sent') {
+            toast.success('Verification link sent to your email address.');
+        }
+    }, [status]);
+
     return (
         <>
             <Head title="Profile settings" />
@@ -36,9 +44,10 @@ export default function Profile({
                     options={{
                         preserveScroll: true,
                     }}
+                    onSuccess={() => toast.success('Profile saved')}
                     className="space-y-6"
                 >
-                    {({ processing, recentlySuccessful, errors }) => (
+                    {({ processing, errors }) => (
                         <>
                             <div className="grid gap-2">
                                 <Label htmlFor="name">Name</Label>
@@ -93,14 +102,6 @@ export default function Profile({
                                                 verification email.
                                             </Link>
                                         </p>
-
-                                        {status ===
-                                            'verification-link-sent' && (
-                                            <div className="mt-2 text-sm font-medium text-green-600">
-                                                A new verification link has been
-                                                sent to your email address.
-                                            </div>
-                                        )}
                                     </div>
                                 )}
 
@@ -112,16 +113,6 @@ export default function Profile({
                                 >
                                     Save
                                 </Button>
-
-                                <p
-                                    className={`text-sm text-neutral-600 transition-opacity duration-300 ease-in-out ${
-                                        recentlySuccessful
-                                            ? 'opacity-100'
-                                            : 'opacity-0'
-                                    }`}
-                                >
-                                    Saved
-                                </p>
                             </div>
                         </>
                     )}

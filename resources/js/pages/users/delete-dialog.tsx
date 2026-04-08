@@ -1,3 +1,4 @@
+import { toast } from 'sonner';
 import { DeleteResourceDialog } from '@/components/delete-resource-dialog';
 import { destroy } from '@/routes/users';
 import type { User } from '@/types';
@@ -35,6 +36,7 @@ export function DeleteUserDialog({
             deleteUrl={destroy(user).url}
             open={open}
             onOpenChange={onOpenChange}
+            onSuccess={() => toast.success('User deleted')}
         />
     );
 }

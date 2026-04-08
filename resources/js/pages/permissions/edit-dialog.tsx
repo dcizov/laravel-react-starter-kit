@@ -1,4 +1,5 @@
 import { Form } from '@inertiajs/react';
+import { toast } from 'sonner';
 
 import PermissionController from '@/actions/App/Http/Controllers/Permissions/PermissionController';
 import InputError from '@/components/input-error';
@@ -55,7 +56,10 @@ export function EditPermissionDialog({
                     {...PermissionController.update.form(permission)}
                     disableWhileProcessing
                     options={{ preserveScroll: true }}
-                    onSuccess={() => onOpenChange(false)}
+                    onSuccess={() => {
+                        toast.success('Permission updated');
+                        onOpenChange(false);
+                    }}
                     className="space-y-4"
                 >
                     {({ processing, errors }) => (

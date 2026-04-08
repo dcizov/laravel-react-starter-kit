@@ -1,5 +1,6 @@
 import { Form } from '@inertiajs/react';
 import { useState } from 'react';
+import { toast } from 'sonner';
 
 import TaskController from '@/actions/App/Http/Controllers/Tasks/TaskController';
 import InputError from '@/components/input-error';
@@ -86,7 +87,10 @@ export function EditTaskDialog({
                     {...TaskController.update.form(task)}
                     disableWhileProcessing
                     options={{ preserveScroll: true }}
-                    onSuccess={() => onOpenChange(false)}
+                    onSuccess={() => {
+                        toast.success('Task updated');
+                        onOpenChange(false);
+                    }}
                     className="space-y-4"
                 >
                     {({ processing, errors }) => (

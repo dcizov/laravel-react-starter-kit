@@ -7,6 +7,12 @@ declare module '@inertiajs/core' {
             auth: Auth;
             can: Record<string, boolean>;
             sidebarOpen: boolean;
+            flash: {
+                success?: string | null;
+                error?: string | null;
+                warning?: string | null;
+                info?: string | null;
+            };
             [key: string]: unknown;
         };
     }

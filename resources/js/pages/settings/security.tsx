@@ -1,6 +1,7 @@
 import { Form, Head } from '@inertiajs/react';
 import { ShieldCheck } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+import { toast } from 'sonner';
 import SecurityController from '@/actions/App/Http/Controllers/Settings/SecurityController';
 import Heading from '@/components/heading';
 import InputError from '@/components/input-error';
@@ -73,6 +74,7 @@ export default function Security({
                         'current_password',
                     ]}
                     resetOnSuccess
+                    onSuccess={() => toast.success('Password updated')}
                     onError={(errors) => {
                         if (errors.password) {
                             passwordInput.current?.focus();
@@ -84,7 +86,7 @@ export default function Security({
                     }}
                     className="space-y-6"
                 >
-                    {({ errors, processing, recentlySuccessful }) => (
+                    {({ errors, processing }) => (
                         <>
                             <div className="grid gap-2">
                                 <Label htmlFor="current_password">
@@ -144,16 +146,6 @@ export default function Security({
                                 >
                                     Save password
                                 </Button>
-
-                                <p
-                                    className={`text-sm text-neutral-600 transition-opacity duration-300 ease-in-out ${
-                                        recentlySuccessful
-                                            ? 'opacity-100'
-                                            : 'opacity-0'
-                                    }`}
-                                >
-                                    Saved
-                                </p>
                             </div>
                         </>
                     )}

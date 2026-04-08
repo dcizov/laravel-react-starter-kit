@@ -1,5 +1,6 @@
 import { Form } from '@inertiajs/react';
 import { useState } from 'react';
+import { toast } from 'sonner';
 
 import UserController from '@/actions/App/Http/Controllers/Users/UserController';
 import InputError from '@/components/input-error';
@@ -59,6 +60,7 @@ export function CreateUserDialog({
                     resetOnSuccess={['password', 'password_confirmation']}
                     disableWhileProcessing
                     onSuccess={() => {
+                        toast.success('User created');
                         setSelectedRoles([]);
                         onOpenChange(false);
                     }}

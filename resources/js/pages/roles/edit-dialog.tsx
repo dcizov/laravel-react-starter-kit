@@ -1,5 +1,6 @@
 import { Form } from '@inertiajs/react';
 import { useState } from 'react';
+import { toast } from 'sonner';
 
 import RoleController from '@/actions/App/Http/Controllers/Roles/RoleController';
 import InputError from '@/components/input-error';
@@ -67,7 +68,10 @@ export function EditRoleDialog({
                     {...RoleController.update.form(role)}
                     disableWhileProcessing
                     options={{ preserveScroll: true }}
-                    onSuccess={() => onOpenChange(false)}
+                    onSuccess={() => {
+                        toast.success('Role updated');
+                        onOpenChange(false);
+                    }}
                     className="space-y-4 pt-2"
                 >
                     {({ processing, errors }) => (

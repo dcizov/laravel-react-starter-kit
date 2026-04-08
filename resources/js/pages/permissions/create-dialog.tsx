@@ -1,4 +1,5 @@
 import { Form } from '@inertiajs/react';
+import { toast } from 'sonner';
 import PermissionController from '@/actions/App/Http/Controllers/Permissions/PermissionController';
 import InputError from '@/components/input-error';
 import { Button } from '@/components/ui/button';
@@ -41,7 +42,10 @@ export function CreatePermissionDialog({
                 <Form
                     {...PermissionController.store.form()}
                     disableWhileProcessing
-                    onSuccess={() => onOpenChange(false)}
+                    onSuccess={() => {
+                        toast.success('Permission created');
+                        onOpenChange(false);
+                    }}
                     className="space-y-4"
                 >
                     {({ processing, errors }) => (

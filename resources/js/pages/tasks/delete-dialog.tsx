@@ -1,3 +1,4 @@
+import { toast } from 'sonner';
 import { DeleteResourceDialog } from '@/components/delete-resource-dialog';
 import { destroy } from '@/routes/tasks';
 import type { Task } from '@/types';
@@ -35,6 +36,7 @@ export function DeleteTaskDialog({
             deleteUrl={destroy(task).url}
             open={open}
             onOpenChange={onOpenChange}
+            onSuccess={() => toast.success('Task deleted')}
         />
     );
 }

@@ -1,3 +1,4 @@
+import { toast } from 'sonner';
 import { DeleteResourceDialog } from '@/components/delete-resource-dialog';
 import { destroy } from '@/routes/roles';
 import type { Role } from '@/types';
@@ -35,6 +36,7 @@ export function DeleteRoleDialog({
             deleteUrl={destroy(role).url}
             open={open}
             onOpenChange={onOpenChange}
+            onSuccess={() => toast.success('Role deleted')}
         />
     );
 }

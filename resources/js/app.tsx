@@ -1,6 +1,7 @@
 import { createInertiaApp } from '@inertiajs/react';
 import { ErrorBoundary } from 'react-error-boundary';
 import type { FallbackProps } from 'react-error-boundary';
+import { Toaster } from '@/components/ui/sonner';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { initializeTheme } from '@/hooks/use-appearance';
 import AppLayout from '@/layouts/app-layout';
@@ -55,7 +56,10 @@ createInertiaApp({
                     );
                 }}
             >
-                <TooltipProvider delay={0}>{app}</TooltipProvider>
+                <TooltipProvider delay={0}>
+                    {app}
+                    <Toaster richColors />
+                </TooltipProvider>
             </ErrorBoundary>
         );
     },

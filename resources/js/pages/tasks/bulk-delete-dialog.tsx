@@ -1,3 +1,4 @@
+import { toast } from 'sonner';
 import { BulkDeleteResourceDialog } from '@/components/bulk-delete-resource-dialog';
 import { destroyBulk } from '@/routes/tasks';
 
@@ -31,7 +32,12 @@ export function BulkDeleteTasksDialog({
             ids={ids}
             open={open}
             onOpenChange={onOpenChange}
-            onSuccess={onSuccess}
+            onSuccess={() => {
+                toast.success(
+                    `${ids.length} ${ids.length === 1 ? 'task' : 'tasks'} deleted`,
+                );
+                onSuccess();
+            }}
         />
     );
 }
